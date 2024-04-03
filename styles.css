@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 
+max-width isme content fill krte rahege to width bhadti rahegi 1200px tak uske baad overflow ho jayegi,
+margin:0 auto; isliye use krte hai taki content middle mei aa jaye use left and right side mei same margin ho.
+ */
+
+.container{
+    height: 100%;
+    max-width: 1200px;  
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1{
+    margin: 20px auto;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+/* 
+display:flex krna hai
+flex-wrap:wrap krna hai taki element horizontal na aa jaye
+*/
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+/* 
+position are relative because image text is overlapping, for overlapping we use absolute position for that nearest ancestor(parent,div) should be relative or non static
+*/
+.card{
+    width: 32%;
+    height: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 
+img ki width card ke equal daini hai 
+ */
+
+.card img{
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    box-shadow: 0 0 20px;
+    object-fit: cover;
+}
+
+/* 
+transform:scale ka use image pr hover krne pr vo badi dikhe islye krte hai
+transition:time 
+filter:drop-shadow jub image badi ho tb shadow effect pade.
+*/
+
+.card:hover img{
+    transform: scale(1.03);
+    transition: 0.5s;
+    filter: drop-shadow(0 0 10px);
+}
+.card:hover img{
+    filter: grayscale(0%);
+}
+
+/* 
+postion:absolute kyu ki overlap hai parent hai card
+opacity:0 rahegi hide kr ke rakhna hai
+hover krne pr opacity 1 krni hai
+*/
+.card figcaption{
+    position:absolute;
+    bottom:0;
+    left: 0;
+    padding: 25px;
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color:#fff;
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+    /* background: linear-gradient(); */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+
+    transition: 0.3s;
+
+}
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03s);
+}
